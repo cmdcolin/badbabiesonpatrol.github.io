@@ -1,24 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import background from "./drawing.svg";
+import boneSvg from "./bone2.svg";
+import "./App.css";
 
 function App() {
+  const [bone, setBone] = useState(false);
+  return (
+    <div>
+      <Bone
+        onClick={() => {
+          setBone(true);
+        }}
+      />
+      {bone ? (
+        <img
+          style={{ position: "absolute", top: 0, left: 0, width: "50%" }}
+          src={boneSvg}
+        />
+      ) : null}
+    </div>
+  );
+}
+
+function Bone(props) {
+  const { onClick } = props;
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <img src={background} style={{ width: "100%" }} />
+      <button onClick={onClick}>Bone!!!!</button>
     </div>
   );
 }
